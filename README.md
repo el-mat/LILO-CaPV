@@ -12,7 +12,7 @@ This fork, Lilo-Capripox, has been tested on 7.5kb amplicons with ~1 kb overlaps
 ## Requirments not covered by conda
 Install Conda :)   
 Install this fork of porechop and make sure it is in your path:
-https://github.com/sclamons/Porechop-1 (once the LILO-CAPV conda environment is activated, you can install this fork using ``` pip3 install git+https://github.com/sclamons/Porechop-1.git ```
+https://github.com/sclamons/Porechop-1 (once the LILO-CAPV conda environment is activated, you can install this fork using ``` pip3 install git+https://github.com/sclamons/Porechop-1.git ```)
 
 ## Installation
 ```
@@ -23,11 +23,11 @@ conda activate LILO-CAPV
 ```
 
 ## Usage
-Lilo assumes your reads are in a folder called *raw/* in the current working directory and have the suffix *.fastq.gz.* Multiple samples can be processed at the same time.  
-Lilo requires a config file detailing the location of a reference, a primer scheme (in the form of a primal scheme style bed file), and a primers.csv file (described below). 
+LILO-CAPV assumes your reads are in a folder called *raw/* in the current working directory and have the suffix *.fastq.gz.*. Multiple samples can be processed at the same time.  
+LILO-CAPV requires a config file detailing the location of a reference, a primer scheme (in the form of a primal scheme style bed file), and a primers.csv file (described below). 
 ```
-conda activate LILO
-snakemake -k -s /path/to/LILO --configfile /path/to/config.file --cores N
+conda activate LILO-CAPV
+snakemake -k -s /path/to/LILO-CAPV --configfile /path/to/config.file --cores N
 ```
 It is recommended to run with -k so that one sample with insufficient coverage will not stop the other jobs completing.
 ## Input specifications
@@ -37,12 +37,12 @@ It is recommended to run with -k so that one sample with insufficient coverage w
 * **reference.fasta** Same reference used to make the scheme file.
 
 ## Output
-Lilo uses the names from raw/ to name the output file. For a file named "sample.fastq.gz", the final assembly will be named "sample_Scaffold.fasta", and files produced during the pipeline will be in a folder called "sample". The output will contain amplicons that had at least 40X full length coverage. Missing amplicons will be represented by Ns. Any ambiguity at overlaps will be indicated with IUPAC codes.
+Lilo uses the names from raw/ to name the output file. For a file named "test.fastq.gz", files produced during the pipeline will be in a folder called "test", and the final assembly will be named "polished_trimmed.fa.cap.contigs". The output will contain amplicons that had at least 40X full length coverage. Missing amplicons will be represented by Ns. Any ambiguity at overlaps will be indicated with IUPAC codes.
 
 ## Note
 * Use of the wrong fork for porechop will cause the pipeline to fail.  
-* Currently Lilo only works on genomes with a single chromosome, but the edit to fix this is relatively simple and I will get to it.
-* Lilo is a work in progress and has been tested on a limited number of references, amplicon sizes, and overlap sizes, I recommend checking the results carefully for each new scheme.    
+* LILO-CAPV only works on CAPV genomes.
+* LILO-CAPV has been adapted from Lilo. Lilo is a work in progress and has been tested on a limited number of references, amplicon sizes, and overlap sizes, I recommend checking the results carefully for each new scheme.    
 * The pipeline currently assumes that any structural variants are contained between the primers of an amplicon and do not change the length of the amplicon by more than 5%. If alt amplicons produce a product of a different length to the original amplicon they may not be allocated to their amplicon. Editing it to work better with alt amplicons is on my to do list.  
 * Should not be used with reads produced with rapid kits, the pipeline assumes the reads are the length of the amplicons.
 * Do let me know if it destroys any cities or steals everyone's left shoe.
