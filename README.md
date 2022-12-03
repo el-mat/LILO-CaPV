@@ -7,12 +7,14 @@ Tiled amplicon data, like those produced from primers designed with [primal sche
 
 Lilo uses a reference only to assign reads to the amplicon they originated from and to order and orient the polished amplicons, no reference sequence is incorporated into the final assembly. Once assigned to an amplicon, a read with high average base quality of roughly median length for that amplicon is selected as a reference and polished with up to 300x coverage three times with medaka. The polished amplicons have primers removed with porechop (fork: https://github.com/sclamons/Porechop-1) and are then assembled with [CAP3](https://faculty.sites.iastate.edu/xqhuang/cap3-and-pcap-sequence-and-genome-assembly-programs). 
 
-This fork, Lilo-Capripox, has been tested on 7.5kb amplicons with ~1 kb overlaps for CAPV.
+Lilo has been tested on SARS-CoV-2 with artic V3 primers. It has also been tested on 7kb and 4kb amplicons with ~100-1000bp overlaps for ASFV, PRRSV-1 and PRRSV-2, schemes for which will be made available in the near future.
+
+Lilo-Capripox, has been tested on 7.5kb amplicons with ~1 kb overlaps for CAPV.
 
 ## Requirments not covered by conda
 Install Conda :)   
 Install this fork of porechop and make sure it is in your path:
-https://github.com/sclamons/Porechop-1 (once the LILO-CAPV conda environment is activated, you can install this fork using ``` pip3 install git+https://github.com/sclamons/Porechop-1.git ```)
+https://github.com/sclamons/Porechop-1 (once your conda environment is activated, you can install this fork using ``` pip3 install git+https://github.com/sclamons/Porechop-1.git ```)
 
 ## Installation
 ```
@@ -23,8 +25,8 @@ conda activate LILO-CAPV
 ```
 
 ## Usage
-LILO-CAPV assumes your reads are in a folder called *raw/* in the current working directory and have the suffix *.fastq.gz.*. Multiple samples can be processed at the same time.  
-LILO-CAPV requires a config file detailing the location of a reference, a primer scheme (in the form of a primal scheme style bed file), and a primers.csv file (described below). 
+Lilo assumes your reads are in a folder called *raw/* in the current working directory and have the suffix *.fastq.gz.*. Multiple samples can be processed at the same time.  
+Lilo requires a config file detailing the location of a reference, a primer scheme (in the form of a primal scheme style bed file), and a primers.csv file (described below). 
 ```
 conda activate LILO-CAPV
 snakemake -k -s /path/to/LILO-CAPV --configfile /path/to/config.file --cores N
@@ -41,8 +43,8 @@ Lilo uses the names from raw/ to name the output file. For a file named "test.fa
 
 ## Note
 * Use of the wrong fork for porechop will cause the pipeline to fail.  
-* LILO-CAPV only works on CAPV genomes.
-* LILO-CAPV has been adapted from Lilo. Lilo is a work in progress and has been tested on a limited number of references, amplicon sizes, and overlap sizes, I recommend checking the results carefully for each new scheme.    
+* Currently Lilo only works on genomes with a single chromosome, but the edit to fix this is relatively simple and I will get to it.
+* Lilo is a work in progress and has been tested on a limited number of references, amplicon sizes, and overlap sizes, I recommend checking the results carefully for each new scheme.    
 * The pipeline currently assumes that any structural variants are contained between the primers of an amplicon and do not change the length of the amplicon by more than 5%. If alt amplicons produce a product of a different length to the original amplicon they may not be allocated to their amplicon. Editing it to work better with alt amplicons is on my to do list.  
 * Should not be used with reads produced with rapid kits, the pipeline assumes the reads are the length of the amplicons.
 * Do let me know if it destroys any cities or steals everyone's left shoe.
