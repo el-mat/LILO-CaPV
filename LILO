@@ -49,7 +49,7 @@ for n in range(1,len(bed)+1):
 IDS, = glob_wildcards("raw/{sample}.fastq.gz")
 
 rule all:
-        input: expand("{sample}_Scaffold.fasta", sample=IDS)
+        input: expand("{sample}/polished_trimmed.fa.cap.contigs", sample=IDS)
 
 rule bed:
 	output:
@@ -221,20 +221,12 @@ rule reporechop:
         shell:
                 "porechop --adapter_threshold 72 --end_threshold 70 --end_size 30 --extra_end_trim 5 --min_trim_size 3 -f {input.prim} -i {input.reads} --threads {threads} --no_split -o {output.trimmed}"
 
-rule scaffold:
+rule cap3:
 	output:
-		scaffold="{sample}_Scaffold.fasta"
+		cap3="{sample}/polished_trimmed.fa.cap.contigs"
 	input:
-		contigs="{sample}/polished_trimmed.fa",
-		ref=reference
-	params:
-		prefix="{sample}",
-		name=">{sample}_Lilo_scaffold",
-		ol=int(expected_overlap*1.5)	
+		contigs="{sample}/polished_trimmed.fa"
 	shell:
-		"""source $CONDA_PREFIX/etc/profile.d/conda.sh
-		conda activate scaffold_builder
-		scaffold_builder.py -i 75 -t {params.ol} -g 80000 -r {input.ref} -q {input.contigs} -p {params.prefix}
-		sed -i '1 s/^.*$/{params.name}/' {params.prefix}_Scaffold.fasta"""
-
+		"""cap3 {input.contigs}
+		fastalength {output.cap3}"""
 

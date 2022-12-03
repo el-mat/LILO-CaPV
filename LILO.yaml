@@ -1,4 +1,4 @@
-name: LILO
+name: LILO-CAPV
 channels:
   - bioconda
   - conda-forge
@@ -34,6 +34,7 @@ dependencies:
   - ca-certificates=2021.5.30=ha878542_0
   - cachetools=4.2.4=pyhd8ed1ab_0
   - cairo=1.16.0=h6cf1ce9_1008
+  - cap3=10.2011=h779adbc_3
   - certifi=2021.5.30=py38h578d9bd_0
   - cffi=1.14.6=py38h3931269_1
   - chardet=4.0.0=py38h578d9bd_1
@@ -152,7 +153,7 @@ dependencies:
   - markdown=3.3.4=pyhd8ed1ab_0
   - markupsafe=2.0.1=py38h497a2fe_0
   - matplotlib-base=3.4.3=py38hf4fb855_1
-  - medaka>=1.4.4=py38h130def0_0
+  - medaka=1.4.4=py38h130def0_0
   - minimap2=2.22=h5bf99c6_0
   - more-itertools=8.10.0=pyhd8ed1ab_0
   - multidict=5.1.0=py38h497a2fe_1
