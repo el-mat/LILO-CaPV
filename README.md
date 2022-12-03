@@ -14,7 +14,8 @@ LILO-Capripox, has been tested on 7.5kb amplicons with ~1 kb overlaps for CAPV (
 ## Requirments not covered by conda
 Install Conda :)   
 Install this fork of porechop and make sure it is in your path:
-https://github.com/sclamons/Porechop-1 (once your conda environment is activated, you can install this fork using ``` pip3 install git+https://github.com/sclamons/Porechop-1.git ```)
+https://github.com/sclamons/Porechop-1 
+(once your conda environment is activated, you can install this fork using ``` pip3 install git+https://github.com/sclamons/Porechop-1.git ```)
 
 ## Installation
 ```
