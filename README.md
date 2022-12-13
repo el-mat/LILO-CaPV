@@ -9,7 +9,7 @@ Lilo uses a reference only to assign reads to the amplicon they originated from 
 
 Lilo has been tested on SARS-CoV-2 with artic V3 primers. It has also been tested on 7kb and 4kb amplicons with ~100-1000bp overlaps for ASFV, PRRSV-1 and PRRSV-2, schemes for which will be made available in the near future.
 
-LILO-Capripox, has been tested on 7.5kb amplicons with ~1 kb overlaps for CAPV (as described by [Mathijs et al.,2022](https://www.sciencedirect.com/science/article/pii/S0166093422000118)).
+LILO-Capripox, has been tested on 7.5kb amplicons with ~1 kb overlaps for CAPV (as described by [Mathijs et al., 2022](https://www.sciencedirect.com/science/article/pii/S0166093422000118)).
 
 ## Requirments
 Install Conda :)   
