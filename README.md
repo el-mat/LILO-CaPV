@@ -9,7 +9,7 @@ Lilo uses a reference only to assign reads to the amplicon they originated from 
 
 Lilo has been tested on SARS-CoV-2 with artic V3 primers. It has also been tested on 7kb and 4kb amplicons with ~100-1000bp overlaps for ASFV, PRRSV-1 and PRRSV-2, schemes for which will be made available in the near future.
 
-LILO-CaPV, has been tested on 7.5kb amplicons with ~1 kb overlaps for CAPV (as described by [Mathijs et al., 2022](https://www.sciencedirect.com/science/article/pii/S0166093422000118)).
+LILO-CaPV, has been tested on 7.5kb amplicons with ~1 kb overlaps for CaPV (as described by [Mathijs et al., 2022](https://www.sciencedirect.com/science/article/pii/S0166093422000118)).
 
 ## Requirments
 Install Conda :)   
@@ -32,7 +32,7 @@ snakemake -k -s /path/to/LILO-CaPV --configfile /path/to/config.file --cores N
 ```
 It is recommended to run with -k so that one sample with insufficient coverage will not stop the other jobs completing. N should be adapted to the amount of threads available for the analysis.
 
-A folder called *raw/* containing a CAPV dataset *test.fastq.gz* is provided to allow you to test the installation of the Lilo pipeline. The pipeline should generate a ~150 kb contig in *test/polished_trimmed.fa.cap.contigs*
+A folder called *raw/* containing a CaPV dataset *test.fastq.gz* is provided to allow you to test the installation of the Lilo pipeline. The pipeline should generate a ~150 kb contig in *test/polished_trimmed.fa.cap.contigs*
 
 ## Input specifications
 * **config.file**: an example config file has been provided.  
