@@ -13,26 +13,27 @@ LILO-Capripox, has been tested on 7.5kb amplicons with ~1 kb overlaps for CAPV (
 
 ## Requirments not covered by conda
 Install Conda :)   
-Install this fork of porechop and make sure it is in your path:
-https://github.com/sclamons/Porechop-1 
-(once your conda environment is activated, you can install this fork using ``` pip3 install git+https://github.com/sclamons/Porechop-1.git ```)
 
 ## Installation
 ```
 git clone https://github.com/el-mat/LILO-Capripox.git
 cd LILO-Capripox
-conda env create --file LILO-CAPV.yaml 
-conda activate LILO-CAPV
+conda env create --file LILO.yaml 
+conda activate LILO
+pip3 install git+https://github.com/sclamons/Porechop-1.git
 ```
 
 ## Usage
 Lilo assumes your reads are in a folder called *raw/* in the current working directory and have the suffix *.fastq.gz.*. Multiple samples can be processed at the same time.  
-Lilo requires a config file detailing the location of a reference, a primer scheme (in the form of a primal scheme style bed file), and a primers.csv file (described below). 
+Lilo requires a config file detailing the location of a reference, a primer scheme (in the form of a primal scheme style bed file), and a primers.csv file (described below).
 ```
-conda activate LILO-CAPV
-snakemake -k -s /path/to/LILO-CAPV --configfile /path/to/config.file --cores N
+conda activate LILO
+snakemake -k -s /path/to/LILO --configfile /path/to/config.file --cores N
 ```
-It is recommended to run with -k so that one sample with insufficient coverage will not stop the other jobs completing.
+It is recommended to run with -k so that one sample with insufficient coverage will not stop the other jobs completing. N should be adapted to the amount of threads available for the analysis.
+
+A folder called *raw/* containing a CAPV dataset *test.fastq.gz* is provided to allow you to test the installation of the Lilo pipeline. The pipeline should generate a ~150 kb contig in *test/polished_trimmed.fa.cap.contigs*
+
 ## Input specifications
 * **config.file**: an example config file has been provided.  
 * **Primer scheme**: As output by primal scheme, **with alt primers removed**. Bed file of primer alignment locations. Columns: reference name, primer start, primer end, primer name, pool (must end with 1 or 2).  
