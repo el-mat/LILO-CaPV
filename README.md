@@ -11,7 +11,7 @@ Lilo has been tested on SARS-CoV-2 with artic V3 primers. It has also been teste
 
 LILO-Capripox, has been tested on 7.5kb amplicons with ~1 kb overlaps for CAPV (as described by [Mathijs et al.,2022](https://www.sciencedirect.com/science/article/pii/S0166093422000118)).
 
-## Requirments not covered by conda
+## Requirments
 Install Conda :)   
 
 ## Installation
