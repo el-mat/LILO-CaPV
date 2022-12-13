@@ -9,7 +9,7 @@ Lilo uses a reference only to assign reads to the amplicon they originated from 
 
 Lilo has been tested on SARS-CoV-2 with artic V3 primers. It has also been tested on 7kb and 4kb amplicons with ~100-1000bp overlaps for ASFV, PRRSV-1 and PRRSV-2, schemes for which will be made available in the near future.
 
-LILO-Capripox, has been tested on 7.5kb amplicons with ~1 kb overlaps for CAPV (as described by [Mathijs et al., 2022](https://www.sciencedirect.com/science/article/pii/S0166093422000118)).
+LILO-CaPV, has been tested on 7.5kb amplicons with ~1 kb overlaps for CAPV (as described by [Mathijs et al., 2022](https://www.sciencedirect.com/science/article/pii/S0166093422000118)).
 
 ## Requirments
 Install Conda :)   
@@ -18,8 +18,8 @@ Install Conda :)
 ```
 git clone https://github.com/el-mat/LILO-Capripox.git
 cd LILO-Capripox
-conda env create --file LILO.yaml 
-conda activate LILO
+conda env create --file LILO-CaPV.yaml 
+conda activate LILO-CaPV
 pip3 install git+https://github.com/sclamons/Porechop-1.git
 ```
 
@@ -27,8 +27,8 @@ pip3 install git+https://github.com/sclamons/Porechop-1.git
 Lilo assumes your reads are in a folder called *raw/* in the current working directory and have the suffix *.fastq.gz.*. Multiple samples can be processed at the same time.  
 Lilo requires a config file detailing the location of a reference, a primer scheme (in the form of a primal scheme style bed file), and a primers.csv file (described below).
 ```
-conda activate LILO
-snakemake -k -s /path/to/LILO --configfile /path/to/config.file --cores N
+conda activate LILO-CaPV
+snakemake -k -s /path/to/LILO-CaPV --configfile /path/to/config.file --cores N
 ```
 It is recommended to run with -k so that one sample with insufficient coverage will not stop the other jobs completing. N should be adapted to the amount of threads available for the analysis.
 
