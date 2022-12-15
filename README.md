@@ -16,8 +16,8 @@ Install Conda :)
 
 ## Installation
 ```
-git clone https://github.com/el-mat/LILO-Capripox.git
-cd LILO-Capripox
+git clone https://github.com/el-mat/LILO-CaPV.git
+cd LILO-CaPV
 conda env create --file LILO-CaPV.yaml 
 conda activate LILO-CaPV
 pip3 install git+https://github.com/sclamons/Porechop-1.git
