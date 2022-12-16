@@ -227,6 +227,4 @@ rule cap3:
 	input:
 		contigs="{sample}/polished_trimmed.fa"
 	shell:
-		"""cap3 {input.contigs}
-		fastalength {output.cap3}"""
-
+		"""cap3 {input.contigs}"""
